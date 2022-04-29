@@ -1,17 +1,21 @@
-from xml.dom.minidom import Entity
+from typing import List
+from src.entities.entity import Entity
 from .cadastro_abstract import CadastroAbtract
 
 
 class CadastroCliente(CadastroAbtract):
 
-    def inserir(self, entitie: Entity):
-        pass
+    def inserir(self, entity: Entity):
+        print(f'inserido {entity.id}')
 
     def consultar(self, id) -> Entity:
-        pass
+        print('consultado')
 
-    def remover(self, entitie) -> Entity:
-        pass
+    def remover_por_id(self, id: str) -> Entity:
+        print('removido')
 
-    def listar_todos() -> list(Entity):
-        pass
+    def remover_por_entidade(self, entity) -> Entity:
+        print('removido')
+
+    def listar_todos() -> List[Entity]:
+        print('listado')

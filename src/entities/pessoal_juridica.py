@@ -1,10 +1,10 @@
 from .cliente import Cliente
 
 
-class PessoaFisica(Cliente):
+class PessoaJuridica(Cliente):
 
-    def __init__(self, id: str, endereco: str, telefone: str, cnpj: str):
-        super().__init__(id, endereco, telefone)
+    def __init__(self, id: str, endereco: str, telefone: str, cnpj: str, nome: str):
+        super().__init__(id, endereco, telefone, nome)
         self.__cnpj = cnpj
 
     @property
