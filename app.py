@@ -17,3 +17,5 @@ cadastro.inserir(cliente)
 cadastro.inserir(cliente_pessoa_fisica)
 
 cadastro.inserir(cliente_pessoa_juridica)
+
+cadastro.consultar('1')

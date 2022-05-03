@@ -1,21 +1,28 @@
 from typing import List
-from src.entities.entity import Entity
+from src.entities.cliente import Cliente
 from .cadastro_abstract import CadastroAbtract
+
 
 
 class CadastroCliente(CadastroAbtract):
 
-    def inserir(self, entity: Entity):
-        print(f'inserido {entity.id}')
+    def __init__(self) -> None:
+        super().__init__()
+        self.__clientes: List[Cliente] = []
 
-    def consultar(self, id) -> Entity:
-        print('consultado')
+    def inserir(self, cliente: Cliente):
+        self.__clientes.append(cliente)
+        print(f'inserido {cliente.id}')
 
-    def remover_por_id(self, id: str) -> Entity:
+    def consultar(self, id) -> Cliente:
+        cliente = list(filter(lambda x: x.id == id, self.__clientes))
+        print(f'consultado {cliente[0].nome}')
+
+    def remover_por_id(self, id: str) -> Cliente:
         print('removido')
 
-    def remover_por_entidade(self, entity) -> Entity:
+    def remover_por_entidade(self, cliente: Cliente) -> Cliente:
         print('removido')
 
-    def listar_todos() -> List[Entity]:
+    def listar_todos() -> List[Cliente]:
         print('listado')
