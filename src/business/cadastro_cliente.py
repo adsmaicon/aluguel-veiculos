@@ -3,26 +3,24 @@ from src.entities.cliente import Cliente
 from .cadastro_abstract import CadastroAbtract
 
 
-
 class CadastroCliente(CadastroAbtract):
 
     def __init__(self) -> None:
-        super().__init__()
         self.__clientes: List[Cliente] = []
 
     def inserir(self, cliente: Cliente):
         self.__clientes.append(cliente)
-        print(f'inserido {cliente.id}')
 
-    def consultar(self, id) -> Cliente:
-        cliente = list(filter(lambda x: x.id == id, self.__clientes))
-        print(f'consultado {cliente[0].nome}')
+    def consultar(self, id: str) -> Cliente:
+        cliente = list(filter(lambda cliente: cliente.id == id, self.__clientes))
+        return cliente[0]
 
-    def remover_por_id(self, id: str) -> Cliente:
-        print('removido')
+    def remover_por_id(self, id: str) -> None:
+        cliente = self.consultar(id)
+        self.__clientes.remove(cliente)
 
-    def remover_por_entidade(self, cliente: Cliente) -> Cliente:
-        print('removido')
+    def remover_por_entidade(self, cliente: Cliente) -> None:
+        self.__clientes.remove(cliente)
 
-    def listar_todos() -> List[Cliente]:
-        print('listado')
+    def listar_todos(self) -> List[Cliente]:
+        return self.__clientes
