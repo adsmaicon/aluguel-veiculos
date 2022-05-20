@@ -8,7 +8,7 @@ class CadastroAbtract(ABC):
     def __init__(self):
         self.__lista = []
 
-    def inserir(self, entidade: Entity):
+    def inserir(self, entidade: Entity) -> None:
         self.__lista.append(entidade)
 
     def consultar(self, id: str) -> Entity:
