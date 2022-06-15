@@ -1,7 +1,7 @@
 from src.entities.veiculo import Veiculo
 
 
-class Cominhao(Veiculo):
+class Caminhao(Veiculo):
 
     def __init__(self, id: str, placa: str, km: float, carga: float):
         super().__init__(id, placa, km)

@@ -13,10 +13,9 @@ def test_inserir_cliente(client):
     # Dado
     # Quando
     response = client.post("/cliente", json={
-        "id": "1",
         "endereco": "Rua teste",
-        "telefone": "41 9896-4561",
-        "cpf": "123.123.123-75",
+        "telefone": "4198964561",
+        "cpf": "12312312375",
         "nome": "Teste de API"
     })
 
@@ -54,14 +53,12 @@ def test_busca_cliente_404(client):
 def test_consultar_cliente(client):
     # Dado
     client.post("/cliente", json={
-        "id": "1",
         "endereco": "Rua teste",
         "telefone": "41 9896-4561",
         "cpf": "123.123.123-75",
         "nome": "Teste de API"
     })
     client.post("/cliente", json={
-        "id": "2",
         "endereco": "Rua teste 2",
         "telefone": "41 9896-9844",
         "cpf": "987.987.987-54",
@@ -84,14 +81,12 @@ def test_consultar_cliente(client):
 def test_remover_cliente(client):
     # Dado
     client.post("/cliente", json={
-        "id": "1",
         "endereco": "Rua teste",
         "telefone": "41 9896-4561",
         "cpf": "123.123.123-75",
         "nome": "Teste de API"
     })
     client.post("/cliente", json={
-        "id": "2",
         "endereco": "Rua teste 2",
         "telefone": "41 9896-9844",
         "cpf": "987.987.987-54",

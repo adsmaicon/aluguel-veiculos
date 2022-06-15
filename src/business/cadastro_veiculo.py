@@ -1,4 +1,5 @@
 from typing import List
+import mysql
 from src.business.cadastro_abstract import CadastroAbtract
 from src.entities.veiculo import Veiculo
 
@@ -9,7 +10,27 @@ class CadastroVeiculo(CadastroAbtract):
         self.__veiculos: List[Veiculo] = []
 
     def inserir(self, veiculo: Veiculo):
-        self.__veiculos.append(veiculo)
+        cnx = mysql.connector.connect(user='maicon', password='123456',
+                                      host='127.0.0.1',
+                                      database='aluguel')
+        cursor = cnx.cursor()
+        adiciona_cliente = (
+            """INSERT INTO veiculo
+            (placa, km, carga, bagageiro, portas, tipo) 
+            VALUES ( %(placa)s, %(km)s, %(carga)s, %(bagageiro)s, %(portas)s, %(tipo)s)"""
+        )
+        dados = {
+            "placa": veiculo.placa,
+            "km": veiculo.km,
+            "carga": veiculo.carga if hasattr(veiculo, "carga") else '',
+            "bagageiro": veiculo.bagageiro if hasattr(veiculo, "bagageiro") else None,
+            "portas": veiculo.portas if hasattr(veiculo, "portas") else None,
+            "tipo": 'automovel' if hasattr(veiculo, "bagageiro") else 'caminhao'
+        }
+        cursor.execute(adiciona_cliente, dados)
+        cnx.commit()
+        cursor.close()
+        cnx.close()
 
     def consultar(self, id: str) -> Veiculo:
         veiculo = list(filter(lambda x: x.id == id, self.__veiculos))
