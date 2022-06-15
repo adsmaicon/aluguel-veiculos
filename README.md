@@ -1,5 +1,10 @@
 # aluguel-veiculos
 
+## DER - Diagrama de Entidade Relacional
+
+### Aluguel de veiculos 
+
+![Aluguel](docs/imagens/aluguel.png)
 
 ## UML 
 
